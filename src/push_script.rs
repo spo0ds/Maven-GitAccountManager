@@ -42,10 +42,14 @@ pub fn auto_authenticate_push() -> Result<(), std::io::Error> {
             }
         }
 
-        // Push changes to GitHub
+        // Push changes to GitHub using HTTPS URL with access token
+        let remote_url = format!(
+            "https://{}@github.com/spo0ds/GitAccountManager.git",
+            access_token
+        );
         let mut push_command = Command::new("git");
         push_command.arg("push");
-        push_command.arg(format!("--token={}", access_token));
+        push_command.arg(&remote_url);
         push_command.output()?;
 
         println!("Successfully pushed changes with automatic authentication.");
