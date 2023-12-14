@@ -1,4 +1,5 @@
 #![deny(clippy::all)]
+use regex::Regex;
 use serde::{Deserialize, Serialize};
 use serde_json::{from_reader, to_writer};
 use std::collections::HashMap;
@@ -24,9 +25,24 @@ pub fn get_account_info() {
 
         match action.as_str() {
             "add" => {
-                let username = get_input("Enter username");
-                let email = get_input("Enter email\n");
-                let access_token = get_input("Enter access token\n");
+                let mut username = get_input("Enter username");
+                while username.trim().is_empty() {
+                    println!("Username cannot be empty.");
+                    username = get_input("Enter username");
+                }
+                let mut email = get_input("Enter email\n");
+
+                while !is_valid_email(&email) {
+                    println!("Invalid email address.");
+                    email = get_input("Enter email");
+                }
+
+                let mut access_token = get_input("Enter access token\n");
+
+                while access_token.trim().is_empty() {
+                    println!("Access token cannot be empty.");
+                    access_token = get_input("Enter access token");
+                }
 
                 let account = Account {
                     email,
@@ -81,4 +97,10 @@ pub fn load_accounts(filename: &str) -> Result<HashMap<String, Account>, std::io
     let mut file = File::open(filename)?;
     let accounts = from_reader(&mut file)?;
     Ok(accounts)
+}
+
+fn is_valid_email(email: &str) -> bool {
+    // Regular expression for a simple email validation
+    let email_regex = Regex::new(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").unwrap();
+    email_regex.is_match(email)
 }
