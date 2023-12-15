@@ -3,7 +3,8 @@ name = "manager"
 version = "0.1.0"
 description = "This repo contains a simple utility to switch between different Github accounts. "
 license = "MIT"
-documentation = "https://docs.rs/your_crate_name/0.1.0"
+documentation = "https://github.com/spo0ds/GitAccountManager/blob/main/README.md"
+edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
