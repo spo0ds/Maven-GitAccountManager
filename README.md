@@ -30,6 +30,12 @@ git clone <repository_url>
 cd <repository_directory>
 ```
 
+- To install with cargo 
+
+```bash
+cargo add maven
+```
+
 - Build the Project:
     Build the Rust project using Cargo.
 
@@ -47,7 +53,7 @@ echo 'export PATH=$PATH:$(pwd)/target/release' >> ~/.bashrc
 Execute the compiled binary to run the GitHub Account Manager.
 
 ```bash
-manager <subcommand> [options]
+maven <subcommand> [options]
 ```
 
 ### Commands and Usage
@@ -55,37 +61,37 @@ manager <subcommand> [options]
 - Add a new GitHub account:
 
 ```bash
-manager set <username> <email>
+maven set <username> <email>
 ```
 
 - Display all accounts:
 
 ```bash
-manager list
+maven list
 ```
 
 - Switch to a different GitHub account:
 
 ```bash
-manager switch <username>
+maven switch <username>
 ```
 
 - Reset Git configuration for an account or all accounts:
 
 ```bash
-manager reset [<username>]
+maven reset [<username>]
 ```
 
 - Set Git configuration for a specific account:
 
 ```bash
-manager config --username <username>
+maven config --username <username>
 ```
 
 - Show current Git configuration:
 
 ```bash
-manager show
+maven show
 ```
 
 ### License
