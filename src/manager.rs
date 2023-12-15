@@ -4,6 +4,8 @@ use std::collections::HashMap;
 use std::fs;
 use std::process::Command;
 
+/// Manages user Github accounts through CLI commands.
+
 pub fn manager() {
     let mut accounts = file_operation::load_accounts("accounts.json").unwrap_or_default();
 
@@ -100,6 +102,8 @@ pub fn manager() {
         _ => eprintln!("Invalid action! Please try again."),
     }
 }
+
+// Helper functions for specific actions:
 
 fn handle_show_action() {
     let git_config_output = Command::new("git")
