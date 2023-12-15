@@ -33,7 +33,7 @@ cd <repository_directory>
 - To install with cargo 
 
 ```bash
-cargo add maven
+cargo install maven
 ```
 
 - Build the Project:
